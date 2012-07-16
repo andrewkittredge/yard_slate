@@ -1,2 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Create your yard_slate{% endblock %}
+
+{% block content %}
+Create your YardSlate.
+
+<form action="/create_slate" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="submit" />
+</form>
+{% endblock %}
