@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from collections import namedtuple
 from yard_slate_app.models import YardSlate
 from django.http import HttpResponse, HttpResponseRedirect
+from django.template.context import RequestContext
 
 
 def index(request):
@@ -10,7 +11,7 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
-        form = SlateForm(request.POST)
+        form = SlateForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/view_slate/')
@@ -25,9 +26,9 @@ class SlateForm(ModelForm):
         model = YardSlate
 
 def view_slate(request):
-            
-    return render(request, 'view_slate.html')
-    
-
+    slate = YardSlate.objects.get(id=1)
+    return render_to_response('view_slate.html', 
+                              {'yard_slate' : slate}, 
+                              context_instance=RequestContext(request))
 
 Slate = namedtuple('slate', ('id'))

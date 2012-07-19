@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load staticfiles %}
 
-viewing slate {{ slate.id }}
+viewing slate {{ yard_slate.title }} time {{ yard_slate.start_time }}
+
+<img src="{% static yard_slate.photo_one %}" />
+
 
 {% endblock %}
