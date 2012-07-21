@@ -1,6 +1,11 @@
+{% load staticfiles %}
+
 <html>
 
-<head><title>yard_slate</title></head>
+<head>
+<title>yard_slate</title>
+<link rel="stylesheet" href="{% static "base.css" %}">
+</head>
 {% block title %}{% endblock %}
 <body>yard_slate</body>
 {% block content %}{% endblock %}

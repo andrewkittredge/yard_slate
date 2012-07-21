@@ -26,7 +26,7 @@ class SlateForm(ModelForm):
         model = YardSlate
 
 def view_slate(request):
-    slate = YardSlate.objects.get(id=1)
+    slate = YardSlate.objects.get(id=3)
     return render_to_response('view_slate.html', 
                               {'yard_slate' : slate}, 
                               context_instance=RequestContext(request))
