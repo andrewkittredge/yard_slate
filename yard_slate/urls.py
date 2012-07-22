@@ -10,7 +10,8 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'yard_slate_app.views.index', name='index'),
     url(r'^create', 'yard_slate_app.views.create', name='create'),
-    url(r'^view_slate', 'yard_slate_app.views.view_slate', name='view_slate')
+    url(r'^view_slate', 'yard_slate_app.views.view_slate', name='view_slate'),
+    url(r'^printable_slate', 'yard_slate_app.views.yard_slate_pdf', name='print_slate')
     # url(r'^yard_slate/', include('yard_slate.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
