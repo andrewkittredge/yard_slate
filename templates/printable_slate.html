@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+viewing slate {{ yard_slate.title }} time {{ yard_slate.start_time }}
+
+<img src="{{ MEDIA_URL }}{{ slate.photo_one }}" />
+<img src="{{ MEDIA_URL }}{{ slate.photo_two }}" />
+<img src="{{ MEDIA_URL }}{{ slate.photo_three  }}" />
+<img src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
+<img src="{{ qr_url }}" />
+
+{% endblock %}

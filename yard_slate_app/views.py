@@ -7,6 +7,7 @@ from django.template.context import RequestContext
 from io import BytesIO
 
 from reportlab.pdfgen import canvas
+from yard_slate_app.utils.qr_code import qr_url
 
 SLATE_IDENTIFIER = 'yard_slate'
 def index(request):
@@ -34,6 +35,13 @@ def view_slate(request):
     slate = YardSlate.objects.get(id=request.REQUEST[SLATE_IDENTIFIER])
     return render_to_response('view_slate.html', 
                               {'yard_slate' : slate}, 
+                              context_instance=RequestContext(request))
+
+def printable_slate(request):
+    slate = YardSlate.objects.get(id=request.REQUEST[SLATE_IDENTIFIER])
+    return render_to_response('printable_slate.html',
+                              {'slate' : slate,
+                               'qr_url' : qr_url(slate)},
                               context_instance=RequestContext(request))
     
 def yard_slate_pdf(request):
