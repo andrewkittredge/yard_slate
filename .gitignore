@@ -6,3 +6,4 @@ local_settings.py
 .pydevproject
 .my*
 *.swp
+slate_images/*
