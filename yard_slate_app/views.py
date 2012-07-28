@@ -6,7 +6,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template.context import RequestContext
 from io import BytesIO
 
-from reportlab.pdfgen import canvas
 from yard_slate_app.utils.qr_code import qr_url
 
 SLATE_IDENTIFIER = 'yard_slate'
