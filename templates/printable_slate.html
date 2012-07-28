@@ -2,13 +2,14 @@
 {% block content %}
 {% load staticfiles %}
 
-viewing slate {{ yard_slate.title }} time {{ yard_slate.start_time }}
+viewing slate {{ slate.title }} time {{ slate.start_time }} </br>
 
 <img src="{{ MEDIA_URL }}{{ slate.photo_one }}" />
 <img src="{{ MEDIA_URL }}{{ slate.photo_two }}" />
 <img src="{{ MEDIA_URL }}{{ slate.photo_three  }}" />
 <img src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
 <img src="{{ qr_url }}" />
+
 <script type="text/javascript"
 src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0pD5byn_o&sensor=true">
 </script>
