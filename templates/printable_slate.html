@@ -9,5 +9,21 @@ viewing slate {{ yard_slate.title }} time {{ yard_slate.start_time }}
 <img src="{{ MEDIA_URL }}{{ slate.photo_three  }}" />
 <img src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
 <img src="{{ qr_url }}" />
-
+<script type="text/javascript"
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0pD5byn_o&sensor=true">
+</script>
+<script type="text/javascript">
+  function initialize(){
+	var mapOptions = {
+		center : new google.maps.LatLng(-34.397, 150.644),
+		zoom : 8,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById("map_canvas"),
+		mapOptions);
+	}
+	</script>
+	<body onload="initialize()">
+		<div id="map_canvas" style="width:100%; height:100%"></div>
+	</body>
 {% endblock %}
