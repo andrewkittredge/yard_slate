@@ -1,13 +1,25 @@
 {% load staticfiles %}
-
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
 
 <head>
-<title>yard_slate</title>
-<link rel="stylesheet" href="{% static "base.css" %}">
+	<title>YardSlate</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="{% static "styles/reset.css" %}">
+	<link rel="stylesheet" href="{% static "styles/layout.css" %}">
 </head>
-{% block title %}{% endblock %}
-<body><img height="50" width="50" src="{% static "yard_slate_logo.png" %}"/>yard_slate</body>
-</br> 
-{% block content %}{% endblock %}
+
+<body>
+	<div id="header">
+		<a href="/" id="logo" ><img height="50" width="50" src="{% static "images/yard_slate_logo.png" %}" />YardSlate</a>
+
+	</div>
+	<div id="content">
+		<h1>{% block title %}{% endblock %}</h1>
+		{% block content %}{% endblock %}
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</body>
+
 </html>
