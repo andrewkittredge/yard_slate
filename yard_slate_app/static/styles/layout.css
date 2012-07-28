@@ -23,6 +23,7 @@ body {
 
 #content {
 	padding: 2em;
+	max-width: 1000px;
 }
 
 #content h1 {
@@ -36,9 +37,46 @@ body {
 	margin: 1em 0;
 }
 
+#content form {
+	max-width: 500px;
+}
+
+#content form .field-wrap {
+	margin: .5em 0;
+}
+
 #content label {
 	display: inline-block;
 	width: 100px;
+}
+
+#content form .field-wrap.photo_one,
+#content form .field-wrap.photo_two,
+#content form .field-wrap.photo_three,
+#content form .field-wrap.photo_four {
+	background: #ccc;
+	float: left;
+	height: 10em;
+	width: 48%;
+	margin: 0 2% 2% 0;
+	text-align: center;
+}
+
+#content form .field-wrap.photo_one label,
+#content form .field-wrap.photo_two label,
+#content form .field-wrap.photo_three label,
+#content form .field-wrap.photo_four label {
+	display: block;
+	text-align: center;
+	margin: 2em 0;
+	width: 100%;
+}
+
+#content form .field-wrap.photo_one input,
+#content form .field-wrap.photo_two input,
+#content form .field-wrap.photo_three input,
+#content form .field-wrap.photo_four input {
+	margin-left: 2em;	
 }
 
 #content input[type=submit] {

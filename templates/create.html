@@ -4,7 +4,13 @@
 {% block content %}
 
 <form action="/create_slate" method="post" enctype="multipart/form-data">{% csrf_token %}
-{{ form.as_p }}
+{% for field in form %}
+    <div class="field-wrap {{ field.html_name }}">
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+    </div>
+{% endfor %}
 <input type="submit" value="Create Your YardSlate" />
 </form>
 {% endblock %}
