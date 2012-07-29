@@ -1,12 +1,13 @@
 from django.shortcuts import render_to_response, render
 from django.forms import ModelForm
-from collections import namedtuple
 from yard_slate_app.models import YardSlate
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
-from io import BytesIO
+
 
 from yard_slate_app.utils.qr_code import qr_url
+import dateutil.parser 
+from django.forms.fields import DateTimeField
 
 SLATE_IDENTIFIER = 'yard_slate'
 def index(request):
@@ -23,12 +24,24 @@ def create(request):
     return render(request, 'create.html', {'form' : form})
 
 
-    
+class FuzzyDateTimeField(DateTimeField):
+    def to_python(self, value):
+        try:
+            date = dateutil.parser.parse(value)
+        except ValueError:
+            #Date utils couldn't figure it out.  Let the default parser have a
+            #swing at it and throw errors as necessary.
+            date = value
+        return DateTimeField.to_python(self, date)
 
 
 class SlateForm(ModelForm):
+    start_time = FuzzyDateTimeField()
+    end_time = FuzzyDateTimeField()
     class Meta:
         model = YardSlate
+        
+
 
 def view_slate(request):
     slate = YardSlate.objects.get(id=request.REQUEST[SLATE_IDENTIFIER])
@@ -42,19 +55,4 @@ def printable_slate(request):
                               {'slate' : slate,
                                'qr_url' : qr_url(slate)},
                               context_instance=RequestContext(request))
-    
-def yard_slate_pdf(request):
-    slate = YardSlate.objects.get(id=request.REQUEST[SLATE_IDENTIFIER])
-    with BytesIO() as buffer_:
-    
-        pdf = canvas.Canvas(buffer_)
-    
-        pdf.drawString(100, 100, "PDF For Slate %s" % slate.id)
-        pdf.showPage()
-        pdf.save()
-        out_bytes = buffer_.getvalue()
-        
-    response = HttpResponse(mimetype='application/pdf')
-    response['Content-Disposition'] = 'attachement; filename=slate.pdf'
-    response.write(out_bytes)
-    return response
+ 

@@ -7,7 +7,7 @@ class YardSlate(models.Model):
     end_time = models.DateTimeField()
     location = models.CharField(max_length=100)
     
-    photo_one = models.ImageField(upload_to='./')
-    photo_two = models.ImageField(upload_to='slate_images')
-    photo_three = models.ImageField(upload_to='slate_images')
-    photo_four = models.ImageField(upload_to='slate_images')
+    photo_one = models.ImageField(upload_to='slate_images', blank=True)
+    photo_two = models.ImageField(upload_to='slate_images', blank=True)
+    photo_three = models.ImageField(upload_to='slate_images', blank=True)
+    photo_four = models.ImageField(upload_to='slate_images', blank=True)
