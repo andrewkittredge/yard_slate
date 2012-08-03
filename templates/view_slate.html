@@ -9,4 +9,6 @@ viewing slate {{ yard_slate.title }} time {{ yard_slate.start_time }}
 <img src="{{ MEDIA_URL }}{{ yard_slate.photo_three  }}" />
 <img src="{{ MEDIA_URL }}{{ yard_slate.photo_four }}" />
 
+<a href="/printable_slate/?yard_slate={{ yard_slate.id }}">Print a Flyer</a>
+
 {% endblock %}
