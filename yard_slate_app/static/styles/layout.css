@@ -88,3 +88,66 @@ body {
 	margin: 1em 0;
 	padding: 0.5em;
 }
+
+/* printable page */
+
+body.printable {
+	margin: 2em;}
+
+body.printable #printHeader {
+	margin-bottom: 1em;
+	overflow: hidden;
+}
+
+body.printable #printHeader #logo {
+	color: #000;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 5em;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+body.printable #printHeader #logo img {
+	vertical-align: middle;
+}
+
+body.printable #printHeader h1 {
+	display: inline-block;
+	float: right;
+	line-height: 50px;
+}
+
+body.printable #printImages {
+	width: 500px;
+}
+
+body.printable #printImages .row {
+	overflow: hidden;
+	max-height: 235px;
+	margin: 15px 0;
+}
+
+body.printable #printImages img.print-image {
+	float: left;
+	height: 235px;
+	max-width: 235px;
+	margin-right: 15px;
+}
+
+body.printable #printImages .row.static {
+	position: relative;
+	height: 375px;
+}
+
+body.printable #printImages .row.static img.qr {
+	height: 235px;
+	width: 235px;
+}
+
+body.printable #printImages #mapCanvas {
+	float: left;
+	height: 235px;
+	width: 235px;
+}

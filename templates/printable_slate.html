@@ -1,14 +1,36 @@
-{% extends 'base.html' %}
-{% block content %}
 {% load staticfiles %}
-Come to Our Yard Sale
-slate {{ slate.title }} time {{ slate.start_time }} </br>
+<!DOCTYPE html>
+<html lang="en-US">
 
-<img src="{{ MEDIA_URL }}{{ slate.photo_one }}" />
-<img src="{{ MEDIA_URL }}{{ slate.photo_two }}" />
-<img src="{{ MEDIA_URL }}{{ slate.photo_three  }}" />
-<img src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
-<img src="{{ qr_url }}" />
+<head>
+  <title>YardSlate</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{% static "styles/reset.css" %}">
+  <link rel="stylesheet" href="{% static "styles/layout.css" %}">
+  <link rel="stylesheet" href="{% static "styles/print.css" %}" media="print">
+</head>
+<body class="printable">
+
+<div id="printHeader">
+    <span id="logo"><img height="50" width="50" src="{% static "images/yard_slate_logo.png" %}" />YardSlate</span>
+    <h1>{{ slate.title }} : {{ slate.start_time }} {{ slate.location }}</h1>
+</div>
+
+<div id="printImages">
+    <div class="row">
+        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_one }}" />
+        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_two }}" />
+    </div>
+    <div class="row"
+        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_three  }}" />
+        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
+    </div>
+    <div class="row static-height">
+        <img class="print-image qr" src="{{ qr_url }}" />
+        <div id="mapCanvas"></div>
+    </div>
+</div>
 
 <script type="text/javascript"
 src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0pD5byn_o&sensor=true">
@@ -19,10 +41,10 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0p
   function initialize(){
 	var mapOptions = {
 		center : new google.maps.LatLng(-34.397, 150.644),
-		zoom : 8,
+		zoom : 16,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	map = new google.maps.Map(document.getElementById("map_canvas"),
+	map = new google.maps.Map(document.getElementById("mapCanvas"),
 		mapOptions);
 	codeAddress();
 	}
@@ -42,9 +64,10 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0p
        }
       )
     }
-	</script>
-	<body onload="initialize()">
-		<div id="map_canvas" style="width:100%; height:100%"></div>
-	</body>
 
-{% endblock %}
+    window.onload = initialize;
+	</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</body>
+
+</html>
