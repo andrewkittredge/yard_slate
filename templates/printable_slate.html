@@ -10,64 +10,33 @@
   <link rel="stylesheet" href="{% static "styles/layout.css" %}">
   <link rel="stylesheet" href="{% static "styles/print.css" %}" media="print">
 </head>
-<body class="printable">
+<body class="printable" data-init="printable">
 
-<div id="printHeader">
-    <span id="logo"><img height="50" width="50" src="{% static "images/yard_slate_logo.png" %}" />YardSlate</span>
-    <h1>{{ slate.title }}<br/>{{ slate.start_time }} {{ slate.location }}</h1>
-</div>
-
-<div id="printImages">
-    <div class="row">
-        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_one }}" />
-        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_two }}" />
+    <div id="printHeader">
+        <span id="logo"><img height="50" width="50" src="{% static "images/yard_slate_logo.png" %}" />YardSlate</span>
+        <h1>{{ slate.title }}<br/>{{ slate.start_time }} {{ slate.location }}</h1>
     </div>
-    <div class="row">
-        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_three }}" />
-        <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
+    <div id="printImages">
+        <div class="row">
+            <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_one }}" />
+            <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_two }}" />
+        </div>
+        <div class="row">
+            <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_three }}" />
+            <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
+        </div>
+        <div class="row static-height">
+            <div id="mapCanvas"></div>
+            <img class="print-image qr" src="{{ qr_url }}" />
+        </div>
     </div>
-    <div class="row static-height">
-        <div id="mapCanvas"></div>
-        <img class="print-image qr" src="{{ qr_url }}" />
-    </div>
-</div>
 
-<script type="text/javascript"
-src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0pD5byn_o&sensor=true">
-</script>
-<script type="text/javascript">
-        
-  var map;
-  function initialize(){
-	var mapOptions = {
-		center : new google.maps.LatLng(-34.397, 150.644),
-		zoom : 16,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	map = new google.maps.Map(document.getElementById("mapCanvas"),
-		mapOptions);
-	codeAddress();
-	}
-  function codeAddress() {
-        var address = "{{ slate.location }}";
-	geocoder = new google.maps.Geocoder();
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-       }
-      )
-    }
-
-    window.onload = initialize;
-	</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0pD5byn_o&sensor=true"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+      window.SLATELOCATION = "{{ slate.location }}";
+    </script>
+    <script src="{% static "scripts/global.js" %}"></script>
 </body>
 
 </html>
