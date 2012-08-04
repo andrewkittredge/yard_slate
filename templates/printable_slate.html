@@ -14,7 +14,7 @@
 
 <div id="printHeader">
     <span id="logo"><img height="50" width="50" src="{% static "images/yard_slate_logo.png" %}" />YardSlate</span>
-    <h1>{{ slate.title }} : {{ slate.start_time }} {{ slate.location }}</h1>
+    <h1>{{ slate.title }}<br/>{{ slate.start_time }} {{ slate.location }}</h1>
 </div>
 
 <div id="printImages">
@@ -27,8 +27,8 @@
         <img class="print-image" src="{{ MEDIA_URL }}{{ slate.photo_four }}" />
     </div>
     <div class="row static-height">
-        <img class="print-image qr" src="{{ qr_url }}" />
         <div id="mapCanvas"></div>
+        <img class="print-image qr" src="{{ qr_url }}" />
     </div>
 </div>
 
