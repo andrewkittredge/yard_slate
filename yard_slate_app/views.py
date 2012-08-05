@@ -43,7 +43,7 @@ class SlateForm(ModelForm):
 def view_slate(request):
     slate = YardSlate.objects.get(id=request.REQUEST[SLATE_IDENTIFIER])
     return render_to_response('view_slate.html', 
-                              {'yard_slate' : slate}, 
+                              {'slate' : slate}, 
                               context_instance=RequestContext(request))
 
 def printable_slate(request):

@@ -10,12 +10,8 @@ YSLATE.common = (function() {
 	};
 }());
 
-YSLATE.printable = (function() {
-	var init = function() {
-		setupMap();
-	};
-
-	function setupMap() {
+function setupMap() {
+		alert("setting up map.")
 		var map;
 		var mapOptions = {
 			center : new google.maps.LatLng(-34.397, 150.644),
@@ -43,6 +39,19 @@ YSLATE.printable = (function() {
 	    };
 	}
 
+YSLATE.contains_map = (function() {
+	var init = function() {
+		setupMap();
+	};
+	return {
+		init: init
+	};
+}());
+
+YSLATE.printable = (function() {
+	var init = function() {
+		setupMap();
+	};
 	return {
 		init: init
 	};

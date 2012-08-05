@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="{% static "styles/layout.css" %}">
 </head>
 
-<body data-init="{% block pagetype %}home{% endblock %}">
+<body data-init="{% block pagetype %}home{% endblock %}" class="contains_map">
 	<div id="header">
 		<a href="/" id="logo" ><img height="50" width="50" src="{% static "images/yard_slate_logo.png" %}" />YardSlate</a>
 
@@ -22,5 +22,4 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="{% static "scripts/global.js" %}"></script>
 </body>
-
 </html>
