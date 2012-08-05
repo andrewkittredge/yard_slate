@@ -34,14 +34,11 @@ class FuzzyDateTimeField(DateTimeField):
             date = value
         return DateTimeField.to_python(self, date)
 
-
 class SlateForm(ModelForm):
     start_time = FuzzyDateTimeField()
     end_time = FuzzyDateTimeField()
     class Meta:
         model = YardSlate
-        
-
 
 def view_slate(request):
     slate = YardSlate.objects.get(id=request.REQUEST[SLATE_IDENTIFIER])
