@@ -11,3 +11,9 @@ DATABASES = {
 
 
 SLATEDOMAIN = '192.168.0.101:8000'
+
+TEMPLATE_DIRS = ('/home/yardslate/webapps/yard_slate/myproject/myproject/templates')
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home/media/media.lawrence.com/media/"
+MEDIA_ROOT = '/home/yardslate/webapps/yard_slate/myproject/myproject/slate_images/'
