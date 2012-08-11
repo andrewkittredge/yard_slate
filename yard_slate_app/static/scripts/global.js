@@ -13,6 +13,7 @@ YSLATE.common = (function() {
 YSLATE.mobile = (function() {
 
 	var init = function() {
+		alert ( $(window).width() );
 		setupMap();
 	};
 

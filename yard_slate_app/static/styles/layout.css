@@ -151,9 +151,13 @@ body.printable #printImages #mapCanvas {
 	width: 235px;
 }
 
-body.contains_map #printImages #mapCanvas {
-	float: left;
+body.mobile h1 {
+	font-size: 16px;
+	line-height: 1.25em;
+	margin: 1em;
+}
+
+body.mobile #mapCanvas {
 	height: 235px;
-	margin-right: 15px;
-	width: 235px;
+	width: 100%;
 }
