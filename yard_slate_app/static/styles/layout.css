@@ -129,7 +129,7 @@ body.printable #printImages .row {
 
 body.printable #printImages img.print-image {
 	float: left;
-	height: 235px;
+	max-height: 235px;
 	max-width: 235px;
 	margin-right: 15px;
 }
