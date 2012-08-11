@@ -66,7 +66,6 @@ YSLATE.mobile = (function() {
 					directionsDisplay.setDirections(result);
 				}
 			});
-			alert(latLong)
 		};
 		var failure = function(error){
 			alert( "could not get location");
