@@ -1,0 +1,7 @@
+body.printable {
+	margin: 0;
+}
+
+body.printable #printHeader h1 {
+	font-size: 24px;
+}

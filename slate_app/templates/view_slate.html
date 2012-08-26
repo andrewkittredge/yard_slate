@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>YardSlate</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{% static "styles/reset.css" %}">
+  <link rel="stylesheet" href="{% static "styles/layout.css" %}">
+  <link rel="stylesheet" href="{% static "styles/print.css" %}" media="print">
+</head>
+<body class="mobile" data-init="mobile">
+
+    <h1>{{ slate.title }}<br/>{{ slate.start_time }}<br/>{{ slate.location }}</h1>
+    <div id="mapCanvas"></div>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHOSXvgnGXO9Db1bkCfY5-kh0pD5byn_o&sensor=true"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+      window.SLATELOCATION = "{{ slate.location }}";
+    </script>
+    <script src="{% static "scripts/global.js" %}"></script>
+</body>
+
+</html>
